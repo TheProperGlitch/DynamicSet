@@ -2,22 +2,22 @@ public class DynamicSet {
     Element head;
     Element tail;
 
-    void insert(Element value){
+    public void insert(Element value){
         if (head == null) head = value;
         else head.setting(value);
     }
 
-    void printAll(){
-        System.out.println();
-        if (!(head == null)) head.printing();
-    }
-
-    Element search(int input){
+    public Element search(int input){
         return head.searching(input);
     }
 
-    void delete(Element input){
-        head.deleting(input);
+    public void delete(Element input){
+        if (!(input == head)){
+            if(input.getPrev().getLeft() == input) input.getPrev().setLeft(null);
+            else input.setRight(null);
+            if(!(input.getLeft() == null)) input.getPrev().setting(input.getLeft());
+            input.getPrev().setting(input.getRight());
+        } else head = null;
     }
     
 }
