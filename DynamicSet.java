@@ -1,6 +1,6 @@
 public class DynamicSet {
     Element head;
-    Element tail;
+    Element tempa;
 
     public void insert(Element value){
         if (head == null) head = value;
@@ -16,8 +16,13 @@ public class DynamicSet {
             if(input.getPrev().getLeft() == input) input.getPrev().setLeft(null);
             else input.setRight(null);
             if(!(input.getLeft() == null)) input.getPrev().setting(input.getLeft());
-            input.getPrev().setting(input.getRight());
-        } else head = null;
+            if(!(input.getRight() == null)) input.getPrev().setting(input.getRight());
+        } else {
+            tempa = head;
+            head = null;
+            if (tempa.getLeft() != null) insert(tempa.getLeft());
+            if (tempa.getRight() != null) insert(tempa.getRight());
+        }
     }
     
 }
