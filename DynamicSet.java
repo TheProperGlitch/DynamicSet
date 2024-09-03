@@ -14,7 +14,7 @@ public class DynamicSet {
     public void delete(Element input){
         if (!(input == head)){
             if(input.getPrev().getLeft() == input) input.getPrev().setLeft(null);
-            else input.setRight(null);
+            else input.getPrev().setRight(null);
             if(!(input.getLeft() == null)) input.getPrev().setting(input.getLeft());
             if(!(input.getRight() == null)) input.getPrev().setting(input.getRight());
         } else {
